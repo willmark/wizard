@@ -1,0 +1,93 @@
+.wizard-container {
+    max-width: 100%;
+    height: 100%;
+}
+
+.wizard-links {
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    height: 20%;
+}
+
+.wizard-links ul {
+    float: right;
+}
+
+.wizard-links li {
+    display: inline;
+}
+
+.wizard-links li a {
+    padding: 5px 10px;
+    color: #0093d0;
+    text-decoration: none;
+    border: 1px solid #0093d0;
+    float: left;
+    display: block;
+    width: 70px;
+    margin-left: 4px;
+    text-align: center;
+    position: relative;
+}
+
+.wizard-links li a:hover {
+    color: #fff;
+    background: #0093d0;
+}
+
+.wizard {
+    height: 0%;
+    width: 100%;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+:target {
+    height: 100%;
+}
+
+.wizard-content {
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    overflow-y: scroll;
+    opacity: 0;
+    transition: all 1s;
+}
+
+:target .wizard-content {
+    opacity: 1;
+}
+
+@media all and (max-width: 899px) and (min-width: 700px) {
+    .wizard-container {
+        max-width: 700px;
+    }
+}
+
+@media all and (max-width: 699px) and (min-width: 600px) {
+    .wizard-container {
+        max-width: 600px;
+    }
+}
+
+@media all and (max-width: 599px) and (min-width: 500px) {
+    .wizard-container {
+        max-width: 500px;
+    }
+}
+
+@media all and (max-width: 499px) and (min-width: 400px) {
+    .wizard-container {
+        max-width: 400px;
+    }
+}
+
+@media all and (max-width: 399px) and (min-width: 0px) {
+    .wizard-container {
+        max-width: 300px;
+    }
+}
