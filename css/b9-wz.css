@@ -1,24 +1,24 @@
-.wizard-container {
+.b9-wz-container {
     max-width: 100%;
     height: 100%;
 }
 
-.wizard-links {
+.b9-wz-links {
     list-style: none;
     overflow: hidden;
     width: 100%;
     height: 20%;
 }
 
-.wizard-links ul {
+.b9-wz-links ul {
     float: right;
 }
 
-.wizard-links li {
+.b9-wz-links li {
     display: inline;
 }
 
-.wizard-links li a {
+.b9-wz-links li a {
     padding: 5px 10px;
     color: #0093d0;
     text-decoration: none;
@@ -31,12 +31,12 @@
     position: relative;
 }
 
-.wizard-links li a:hover {
+.b9-wz-links li a:hover {
     color: #fff;
     background: #0093d0;
 }
 
-.wizard {
+.b9-wz {
     height: 0%;
     width: 100%;
     position: relative;
@@ -45,11 +45,11 @@
     position: relative;
 }
 
-:target {
+.b9-wz-visible {
     height: 100%;
 }
 
-.wizard-content {
+.b9-wz-content {
     width: 100%;
     height: 80%;
     margin: auto;
@@ -58,36 +58,36 @@
     transition: all 1s;
 }
 
-:target .wizard-content {
+.b9-wz-visible .b9-wz-content {
     opacity: 1;
 }
 
 @media all and (max-width: 899px) and (min-width: 700px) {
-    .wizard-container {
+    .b9-wz-container {
         max-width: 700px;
     }
 }
 
 @media all and (max-width: 699px) and (min-width: 600px) {
-    .wizard-container {
+    .b9-wz-container {
         max-width: 600px;
     }
 }
 
 @media all and (max-width: 599px) and (min-width: 500px) {
-    .wizard-container {
+    .b9-wz-container {
         max-width: 500px;
     }
 }
 
 @media all and (max-width: 499px) and (min-width: 400px) {
-    .wizard-container {
+    .b9-wz-container {
         max-width: 400px;
     }
 }
 
 @media all and (max-width: 399px) and (min-width: 0px) {
-    .wizard-container {
+    .b9-wz-container {
         max-width: 300px;
     }
 }
