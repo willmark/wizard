@@ -36,5 +36,8 @@
 </div>
 <script src="js/b9-wz.js"></script>
 <script>
-    this['b9-wz'].init();
+    var elems = document.getElementsByClassName('b9-wz-container');
+    this['b9-wz'].init(elems[0], function(step, target) {
+        console.log('In ' + step + ' for ' + target);
+    })
 </script>
