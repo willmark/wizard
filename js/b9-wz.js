@@ -17,7 +17,7 @@
         }
         global['b9-wz'] = factory(global.document)
     }
-}(this, function (domReady, angularSanitize, angular, Crud, organizationDetail) {
+}(this, function (domReady) {
     //module will just enclose the entire module in a local scoped variable which will be returned
     //for inclusion in the containing module
     var module = {
@@ -29,19 +29,19 @@
             var currentTarget = {};
 
             /**
-            * unique target id generator
-            */
+             * unique target id generator
+             */
             var hash = function () {
-                   var id = []
-                    for (var i=0;i<24;i++) {
-                        id.push((Math.floor(Math.random()*16) % 16).toString(16))
-                    }
-                    return id.join('')
+                var id = []
+                for (var i = 0; i < 24; i++) {
+                    id.push((Math.floor(Math.random() * 16) % 16).toString(16))
+                }
+                return id.join('')
             }
 
             /**
-            * Create target id's for each section
-            */
+             * Create target id's for each section
+             */
             var wizards = element.getElementsByClassName('b9-wz');
             var elements = Array.prototype.forEach.call(wizards, function (wizardElement, index, arr) {
                 hashval = hash()
@@ -53,39 +53,41 @@
             });
 
             /**
-            * Advance to the next wizard panel
-            */
+             * Advance to the next wizard panel
+             */
             function moveNext() {
                 currentTarget.className = currentTarget.className.replace(pageVisible, '') || currentTarget.className;
                 if (currentTarget.nextElementSibling !== null) {
-                   currentTarget = currentTarget.nextElementSibling;
-                   currentTarget.className = currentTarget.className + ' ' + pageVisible;
+                    currentTarget = currentTarget.nextElementSibling;
+                    currentTarget.className = currentTarget.className + ' ' + pageVisible;
                 }
                 return currentTarget.nextElementSibling;
             }
 
             /**
-            * Move to previous wizard panel
-            */
+             * Move to previous wizard panel
+             */
             function movePrev() {
                 currentTarget.className = currentTarget.className.replace(pageVisible, '') || currentTarget.className;
                 if (currentTarget.previousElementSibling !== null) {
-                   currentTarget = currentTarget.previousElementSibling;
-                   currentTarget.className = currentTarget.className + ' ' + pageVisible;
+                    currentTarget = currentTarget.previousElementSibling;
+                    currentTarget.className = currentTarget.className + ' ' + pageVisible;
                 }
                 return currentTarget.previousElementSibling;
             }
 
             /**
-            * User clicks enter key.  Either advance to next panel, or submit final changes
-            */
+             * User clicks enter key.  Either advance to next panel, or submit final changes
+             */
             element.onsubmit = function (event) {
+                event.preventDefault();
+                !element.validate || element.validate();
                 if (currentTarget.nextElementSibling !== null) {
-                 if (!moveNext()) {
-                   callback('finish', currentTarget);
-                 } else {
-                   callback('next', currentTarget);
-                 }
+                    if (!moveNext()) {
+                        callback('finish', currentTarget);
+                    } else {
+                        callback('next', currentTarget);
+                    }
                 }
             }
 
@@ -95,14 +97,14 @@
             var elements = Array.prototype.forEach.call(wizards, function (wizardElement, index, arr) {
                 var next = '';
                 if (index < arr.length - 2) {
-                    next = '<li><a href="#' +  arr[index+1].getAttribute('id') + '" b9-wz-button="next" class="b9-wz-link">' + nextLabel + '</a></li>'
-                } else if (index < arr.length -1) {
-                    next = '<li><a href="#' +  arr[index+1].getAttribute('id') + '" b9-wz-button="finish" class="b9-wz-link">' + finishLabel + '</a></li>'; 
+                    next = '<li><a href="#' + arr[index + 1].getAttribute('id') + '" b9-wz-button="next" class="b9-wz-link">' + nextLabel + '</a></li>'
+                } else if (index < arr.length - 1) {
+                    next = '<li><a href="#' + arr[index + 1].getAttribute('id') + '" b9-wz-button="finish" class="b9-wz-link">' + finishLabel + '</a></li>';
                     wizardElement.className = wizardElement.className + ' b9-wz-finish';
                 }
                 var prev = '';
                 if (index > 0) {
-                    prev = '<li><a href="#' +  arr[index-1].getAttribute('id') + '" b9-wz-button="prev" class="b9-wz-link">' + prevLabel + '</a></li>';
+                    prev = '<li><a href="#' + arr[index - 1].getAttribute('id') + '" b9-wz-button="prev" class="b9-wz-link">' + prevLabel + '</a></li>';
                 }
 
                 var links = document.createElement('div');

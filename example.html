@@ -8,36 +8,42 @@
     }
 </style>
 
-<div class="b9-wz-container">
-    <section class="b9-wz">
-        <div class="b9-wz-content">
-            <h1>First Page</h1>
-            <p>Content of first page.</p>
-        </div>
-    </section>
-    <section class="b9-wz">
-        <div class="b9-wz-content">
-            <h1>Second Page</h1>
-            <p>Content of second page.</p>
-        </div>
-    </section>
-    <section class="b9-wz">
-        <div class="b9-wz-content">
-            <h1>Third Page</h1>
-            <p>Content of third page.</p>
-        </div>
-    </section>
-    <section class="b9-wz">
-        <div class="b9-wz-content">
-            <h1>Finished!</h1>
-            <p>Last page is just a status indicating the steps are done.</p>
-        </div>
-    </section>
-</div>
+<form>
+    <div class="b9-wz-container">
+        <section class="b9-wz">
+            <div class="b9-wz-content">
+                <h1>First Page</h1>
+                <p>Content of first page.</p>
+                <input id="first" type="text"></input>
+            </div>
+        </section>
+        <section class="b9-wz">
+            <div class="b9-wz-content">
+                <h1>Second Page</h1>
+                <p>Content of second page.</p>
+                <input id="second" type="text"></input>
+            </div>
+        </section>
+        <section class="b9-wz">
+            <div class="b9-wz-content">
+                <h1>Third Page</h1>
+                <p>Content of third page.</p>
+                <input id="third" type="text"></input>
+            </div>
+        </section>
+        <section class="b9-wz">
+            <div class="b9-wz-content">
+                <h1>Finished!</h1>
+                <p>Last page is just a status indicating the steps are done.</p>
+            </div>
+        </section>
+    </div>
+    <button type="submit" style="visibility: hidden;"></button>
+</form>
 <script src="js/b9-wz.js"></script>
 <script>
-    var elems = document.getElementsByClassName('b9-wz-container');
-    this['b9-wz'].init(elems[0], function(step, target) {
+    form = document.forms[0];
+    this['b9-wz'].init(form, function (step, target) {
         console.log('In ' + step + ' for ' + target);
     })
 </script>
