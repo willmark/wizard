@@ -29,28 +29,11 @@
             var currentTarget = {};
 
             /**
-             * unique target id generator
-             */
-            var hash = function () {
-                var id = []
-                for (var i = 0; i < 24; i++) {
-                    id.push((Math.floor(Math.random() * 16) % 16).toString(16))
-                }
-                return id.join('')
-            }
-
-            /**
              * Create target id's for each section
              */
             var wizards = element.getElementsByClassName('b9-wz');
-            var elements = Array.prototype.forEach.call(wizards, function (wizardElement, index, arr) {
-                hashval = hash()
-                wizardElement.setAttribute('id', 'b9-wz' + hashval);
-                if (index === 0) {
-                    wizardElement.className = wizardElement.className + ' ' + pageVisible;
-                    currentTarget = wizardElement;
-                }
-            });
+            wizards[0].className = wizards[0].className + ' ' + pageVisible;
+            currentTarget = wizards[0];
 
             /**
              * Advance to the next wizard panel
@@ -97,14 +80,14 @@
             var elements = Array.prototype.forEach.call(wizards, function (wizardElement, index, arr) {
                 var next = '';
                 if (index < arr.length - 2) {
-                    next = '<li><a href="#' + arr[index + 1].getAttribute('id') + '" b9-wz-button="next" class="b9-wz-link">' + nextLabel + '</a></li>'
+                    next = '<li><a href="#" b9-wz-button="next" class="b9-wz-link">' + nextLabel + '</a></li>'
                 } else if (index < arr.length - 1) {
-                    next = '<li><a href="#' + arr[index + 1].getAttribute('id') + '" b9-wz-button="finish" class="b9-wz-link">' + finishLabel + '</a></li>';
+                    next = '<li><a href="#" b9-wz-button="finish" class="b9-wz-link">' + finishLabel + '</a></li>';
                     wizardElement.className = wizardElement.className + ' b9-wz-finish';
                 }
                 var prev = '';
                 if (index > 0) {
-                    prev = '<li><a href="#' + arr[index - 1].getAttribute('id') + '" b9-wz-button="prev" class="b9-wz-link">' + prevLabel + '</a></li>';
+                    prev = '<li><a href="#" b9-wz-button="prev" class="b9-wz-link">' + prevLabel + '</a></li>';
                 }
 
                 var links = document.createElement('div');
@@ -125,8 +108,6 @@
                         callback(task, currentTarget);
                         break;
                     }
-                    event.preventDefault();
-                    !element.validate || element.validate();
                 }
             });
         }
